@@ -3,18 +3,15 @@ declare(strict_types=1);
 
 namespace App\Managers;
 
-namespace App\Managers;
+namespace App\Patterns\AbstractFactory;
 
 use App\Patterns\AbstractFactory\Android\AndroidFactory;
-use App\Patterns\AbstractFactory\GuiFactory;
 use App\Patterns\AbstractFactory\Linux\LinuxFactory;
 use App\Patterns\AbstractFactory\Mac\MacFactory;
 use App\Patterns\AbstractFactory\Unknown\UnknownFactory;
 use App\Patterns\AbstractFactory\Win\WinFactory;
-use App\Patterns\Decorator\Pizza;
-use App\Patterns\Decorator\PizzaBase;
 
-class PatternManager
+class FactoryService
 {
     /**
      * Фабричный метод возвращающий соответствующую фабрику
@@ -39,10 +36,5 @@ class PatternManager
             return new MacFactory();
         }
         return new UnknownFactory();
-    }
-
-    public function getPizza(): Pizza
-    {
-        return new PizzaBase();
     }
 }

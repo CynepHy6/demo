@@ -5,6 +5,52 @@
 {% endblock %}
 
 {% block body %}
-    <h3>Заказ пиццы</h3>
-{#    TODO сделать форму заказа #}
+    {% if pizza %}
+        <h3>Ваш заказ:</h3>
+        <p>{{ pizza.description }}</p>
+        <p>Цена: {{ pizza.cost }}</p>
+        <p><a href="{{ path('decorator') }}">Заказать другую пиццу</a></p>
+    {% else %}
+        <h3>Сделайте заказ:</h3>
+        <p>
+            <a href="{{ path('decorator', {'type': constant('FAT_BECON', pizzaType)}) }}">
+                Толстая с беконом
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('decorator', {'type':constant('FAT_CHEESE', pizzaType)}) }}">
+                Толстая с сыром
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('decorator', {'type':constant('SLIM_BECON', pizzaType)}) }}">
+                Тонкая с беконом
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('decorator', {'type':constant('SLIM_CHEESE', pizzaType)}) }}">
+                Тонкая с сыром
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('decorator', {'type':constant('DOUBLE_FAT_BECON', pizzaType)}) }}">
+                Двойная толстая с беконом
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('decorator', {'type':constant('DOUBLE_FAT_CHEESE', pizzaType)}) }}">
+                Двойная толстая с сыром
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('decorator', {'type':constant('DOUBLE_SLIM_BECON', pizzaType)}) }}">
+                Двойная тонкая с беконом
+            </a>
+        </p>
+        <p>
+            <a href="{{ path('decorator', {'type':constant('DOUBLE_SLIM_CHEESE', pizzaType)}) }}">
+                Двойная тонкая с сыром
+            </a>
+        </p>
+    {% endif %}
 {% endblock %}
