@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    шаблон Абстрактная фабрика
+{% endblock %}
+
+{% block body %}
+    <h3> Интерфейс меняется в зависимости от операционной системы</h3>
+    <p>ОС: {{ os }}</p>
+    <p>
+        {{ button.render | raw }}
+    </p>
+    <a href="{{ path('home') }}">Назад</a>
+{% endblock %}
