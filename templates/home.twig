@@ -1,13 +1,14 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}
-    PDO project
-{% endblock %}
-
-{% block body %}
-    <h3>примеры реализации шаблонов проектирования</h3>
-    <ul>
-        <li><a href="{{ path('abstract-factory') }}">Абстрактная фабрика</a></li>
-    </ul>
-{% endblock %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDO project</title>
+</head>
+<body>
+<h3>примеры реализации шаблонов проектирования</h3>
+<ul>
+    <li><a href="{{ path('abstract-factory') }}">Абстрактная фабрика</a></li>
+    <li><a href="{{ path('decorator') }}">Декоратор</a></li>
+</ul>
+</body>
+</html>

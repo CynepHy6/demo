@@ -11,11 +11,14 @@ use App\Patterns\AbstractFactory\Linux\LinuxFactory;
 use App\Patterns\AbstractFactory\Mac\MacFactory;
 use App\Patterns\AbstractFactory\Unknown\UnknownFactory;
 use App\Patterns\AbstractFactory\Win\WinFactory;
+use App\Patterns\Decorator\Pizza;
+use App\Patterns\Decorator\PizzaBase;
 
 class PatternManager
 {
     /**
      * Фабричный метод возвращающий соответствующую фабрику
+     *
      * @return GuiFactory
      */
     public function getFactory(): GuiFactory
@@ -36,5 +39,10 @@ class PatternManager
             return new MacFactory();
         }
         return new UnknownFactory();
+    }
+
+    public function getPizza(): Pizza
+    {
+        return new PizzaBase();
     }
 }

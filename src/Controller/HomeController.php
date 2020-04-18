@@ -18,12 +18,23 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @Route("/decorator", name="decorator")
+     */
+    public function indexDecorator(): Response
+    {
+        $pizza = $this->manager->getPizza();
+        return $this->render('pattern/decorator.twig', [
+            'pizza' => $pizza,
+        ]);
+    }
+
+    /**
      * @Route("/abstract-factory", name="abstract-factory")
      */
     public function indexAbstractFactory(): Response
     {
         $factory = $this->manager->getFactory();
-        return $this->render('abstract-factory/abstract-factory.twig', [
+        return $this->render('pattern/abstract-factory.twig', [
             'button' => $factory->createButton(),
             'os' => $factory->getOsName(),
         ]);
