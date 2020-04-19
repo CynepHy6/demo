@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Patterns\AbstractFactory\FactoryService;
 use App\Patterns\Decorator\PizzaEnum;
 use App\Patterns\Decorator\PizzaService;
+use App\Patterns\Observer\ConcreteObserver\ObserverService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +16,34 @@ class HomeController extends AbstractController
 {
     private FactoryService $factoryService;
     private PizzaService $pizzaService;
+    private ObserverService $observerService;
 
-    public function __construct(FactoryService $factoryService, PizzaService $pizzaService)
-    {
+    public function __construct(
+        FactoryService $factoryService,
+        PizzaService $pizzaService,
+        ObserverService $observerService
+    ) {
         $this->factoryService = $factoryService;
         $this->pizzaService = $pizzaService;
+        $this->observerService = $observerService;
+    }
+
+    /**
+     * @Route("/observer", name="observer")
+     *
+     * @return Response
+     */
+    public function indexObserver(): Response
+    {
+        $this->observerService->run();
+        $log = null;
+        $logPath = __DIR__ . '/../../public/observer.log';
+        if (file_exists($logPath)) {
+            $log = file_get_contents($logPath);
+        }
+        return $this->render('pattern/observer.twig', [
+            'log' => $log,
+        ]);
     }
 
     /**

@@ -1,0 +1,12 @@
+{% extends 'pattern-page.twig' %}
+{% block title %}
+    шаблон Наблюдаель
+{% endblock %}
+
+{% block body %}
+    <h3>Наблюдатели</h3>
+    <a href="{{ path('observer') }}">еще раз</a>
+    <p>
+        {{ log|raw }}
+    </p>
+{% endblock %}
