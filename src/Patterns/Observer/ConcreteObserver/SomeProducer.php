@@ -9,8 +9,7 @@ use Exception;
 
 class SomeProducer implements Subject
 {
-    /** @var Observer[] */
-    private array $observers;
+    private \SplObjectStorage $observers;
     private int $someData1;
     private string $someData2;
     private float $someData3;
@@ -18,20 +17,19 @@ class SomeProducer implements Subject
 
     public function __construct()
     {
-        $this->observers = [];
+        $this->observers = new \SplObjectStorage();
+        $this->changed = false;
     }
-
 
     public function registerObserver(Observer $o): void
     {
-        $this->observers[] = $o;
-        $this->changed = false;
+        $this->observers->attach($o);
     }
 
     public function removeObserver(Observer $o): void
     {
-        if (in_array($o, $this->observers, true)) {
-            $this->observers[] = $o;
+        if ($this->observers->contains($o)) {
+            $this->observers->detach($o);
         }
     }
 

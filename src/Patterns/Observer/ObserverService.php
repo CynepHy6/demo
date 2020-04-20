@@ -3,7 +3,12 @@ declare(strict_types=1);
 
 namespace App\Managers;
 
-namespace App\Patterns\Observer\ConcreteObserver;
+namespace App\Patterns\Observer;
+
+use App\Patterns\Observer\ConcreteObserver\Observer1;
+use App\Patterns\Observer\ConcreteObserver\Observer2;
+use App\Patterns\Observer\ConcreteObserver\Observer3;
+use App\Patterns\Observer\ConcreteObserver\SomeProducer;
 
 class ObserverService
 {
@@ -17,7 +22,7 @@ class ObserverService
 
     public function run(): void
     {
-        $logFile = __DIR__ . '/../../../../public/observer.log';
+        $logFile = __DIR__ . '/../../../public/observer.log';
         file_put_contents($logFile, '');
         $o1 = new Observer1($logFile);
         $o2 = new Observer2($logFile);
