@@ -6,7 +6,7 @@ namespace App\Controller;
 use App\Patterns\AbstractFactory\FactoryService;
 use App\Patterns\Decorator\PizzaEnum;
 use App\Patterns\Decorator\PizzaService;
-use App\Patterns\Observer\ConcreteObserver\ObserverService;
+use App\Patterns\Observer\ObserverService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +26,17 @@ class HomeController extends AbstractController
         $this->factoryService = $factoryService;
         $this->pizzaService = $pizzaService;
         $this->observerService = $observerService;
+    }
+
+    /**
+     * @Route("/builder", name="builder")
+     *
+     * @return Response
+     */
+    public function indexBuilder(): Response
+    {
+
+        return $this->render('pattern/builder.twig');
     }
 
     /**
