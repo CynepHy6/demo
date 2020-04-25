@@ -1,0 +1,27 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  nginx:
+    image: 'bitnami/nginx:latest'
+    depends_on:
+      - php-fpm
+    networks:
+      - app-tier
+    ports:
+      - '80:8000'
+      - '443:443'
+    volumes:
+      - ./docker/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/app.conf
+    restart: unless-stopped
+  
+  php-fpm:
+    image: 'bitnami/php-fpm:7.4'
+    networks:
+      - app-tier
+    volumes:
+      - ./:/app
+    restart: unless-stopped
