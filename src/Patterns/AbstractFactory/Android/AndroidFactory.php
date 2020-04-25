@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace App\Patterns\AbstractFactory\Android;
 
-use App\Patterns\AbstractFactory\Button;
-use App\Patterns\AbstractFactory\GuiFactory;
+use App\Patterns\AbstractFactory\ButtonInterface;
+use App\Patterns\AbstractFactory\GuiFactoryInterface;
 
-class AndroidFactory implements GuiFactory
+class AndroidFactory implements GuiFactoryInterface
 {
-    public function createButton(): Button
+    public function createButton(): ButtonInterface
     {
         return new AndroidButton();
     }

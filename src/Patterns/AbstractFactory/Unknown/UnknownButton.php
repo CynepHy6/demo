@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Patterns\AbstractFactory\Unknown;
 
-use App\Patterns\AbstractFactory\Button;
+use App\Patterns\AbstractFactory\ButtonInterface;
 
-class UnknownButton implements Button
+class UnknownButton implements ButtonInterface
 {
     public function render(): string
     {

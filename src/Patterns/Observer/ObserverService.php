@@ -5,9 +5,9 @@ namespace App\Managers;
 
 namespace App\Patterns\Observer;
 
-use App\Patterns\Observer\ConcreteObserver\Observer1;
-use App\Patterns\Observer\ConcreteObserver\Observer2;
-use App\Patterns\Observer\ConcreteObserver\Observer3;
+use App\Patterns\Observer\ConcreteObserver\ObserverInterface1;
+use App\Patterns\Observer\ConcreteObserver\ObserverInterface2;
+use App\Patterns\Observer\ConcreteObserver\ObserverInterface3;
 use App\Patterns\Observer\ConcreteObserver\SomeProducer;
 
 class ObserverService
@@ -24,9 +24,9 @@ class ObserverService
     {
         $logFile = __DIR__ . '/../../../public/observer.log';
         file_put_contents($logFile, '');
-        $o1 = new Observer1($logFile);
-        $o2 = new Observer2($logFile);
-        $o3 = new Observer3($logFile);
+        $o1 = new ObserverInterface1($logFile);
+        $o2 = new ObserverInterface2($logFile);
+        $o3 = new ObserverInterface3($logFile);
         for ($i = 0; $i < 10; $i++) {
             $count = random_int(2, 4);
             if ($count % 2 === 0) {

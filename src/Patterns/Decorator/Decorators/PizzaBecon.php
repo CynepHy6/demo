@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Patterns\Decorator\PizzaMiddle;
+namespace App\Patterns\Decorator\Decorators;
 
-use App\Patterns\Decorator\PizzaBase;
+use App\Patterns\Decorator\PizzaInterfaceBase;
 
-class PizzaBecon extends PizzaBase
+class PizzaBecon extends PizzaInterfaceBase
 {
     public function getDescription(): string
     {

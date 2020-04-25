@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Patterns\Observer\ConcreteObserver;
 
-use App\Patterns\Observer\Data;
+use App\Patterns\Observer\DataInterface;
 
-class DataDTO implements Data
+class DataInterfaceDTO implements DataInterface
 {
     public int $someData1;
     public string $someData2;

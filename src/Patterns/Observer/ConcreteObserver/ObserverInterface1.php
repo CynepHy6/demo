@@ -5,10 +5,10 @@ namespace App\Patterns\Observer\ConcreteObserver;
 
 namespace App\Patterns\Observer\ConcreteObserver;
 
-use App\Patterns\Observer\Data;
-use App\Patterns\Observer\Observer;
+use App\Patterns\Observer\DataInterface;
+use App\Patterns\Observer\ObserverInterface;
 
-class Observer3 implements Observer
+class ObserverInterface1 implements ObserverInterface
 {
     private string $logFile;
 
@@ -17,9 +17,9 @@ class Observer3 implements Observer
         $this->logFile = $log;
     }
 
-    public function update(Data $data): void
+    public function update(DataInterface $data): void
     {
         $name = __METHOD__;
-        file_put_contents($this->logFile, "$name: {$data->getData3()}<br>\n", FILE_APPEND);
+        file_put_contents($this->logFile, "$name: {$data->getData1()}<br>\n", FILE_APPEND);
     }
 }

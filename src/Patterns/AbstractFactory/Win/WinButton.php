@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace App\Patterns\AbstractFactory\Win;
 
 
-use App\Patterns\AbstractFactory\Button;
+use App\Patterns\AbstractFactory\ButtonInterface;
 
-class WinButton implements Button
+class WinButton implements ButtonInterface
 {
     public function render(): string
     {

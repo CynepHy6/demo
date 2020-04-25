@@ -16,9 +16,9 @@ class FactoryService
     /**
      * Фабричный метод возвращающий соответствующую фабрику
      *
-     * @return GuiFactory
+     * @return GuiFactoryInterface
      */
-    public function getFactory(): GuiFactory
+    public function getFactory(): GuiFactoryInterface
     {
         $agent = $_SERVER['HTTP_USER_AGENT'];
 

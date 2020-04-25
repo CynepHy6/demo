@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace App\Patterns\Decorator;
 
-class PizzaBase implements Pizza
+class PizzaInterfaceBase implements PizzaInterface
 {
-    protected Pizza $pizza;
+    protected PizzaInterface $pizza;
 
-    public function __construct(?Pizza $pizza = null)
+    public function __construct(?PizzaInterface $pizza = null)
     {
         $this->pizza = $pizza ?? $this;
     }
@@ -19,6 +19,6 @@ class PizzaBase implements Pizza
 
     public function getCost(): int
     {
-        return 0;
+        return 100;
     }
 }

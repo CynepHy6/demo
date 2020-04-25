@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace App\Patterns\Observer\ConcreteObserver;
 
-use App\Patterns\Observer\Observer;
-use App\Patterns\Observer\Subject;
+use App\Patterns\Observer\ObserverInterface;
+use App\Patterns\Observer\SubjectInterface;
 use Exception;
+use SplObjectStorage;
 
-class SomeProducer implements Subject
+class SomeProducer implements SubjectInterface
 {
-    private \SplObjectStorage $observers;
+    private SplObjectStorage $observers;
     private int $someData1;
     private string $someData2;
     private float $someData3;
@@ -17,31 +18,20 @@ class SomeProducer implements Subject
 
     public function __construct()
     {
-        $this->observers = new \SplObjectStorage();
+        $this->observers = new SplObjectStorage();
         $this->changed = false;
     }
 
-    public function registerObserver(Observer $o): void
+    public function registerObserver(ObserverInterface $o): void
     {
         $this->observers->attach($o);
     }
 
-    public function removeObserver(Observer $o): void
+    public function removeObserver(ObserverInterface $o): void
     {
         if ($this->observers->contains($o)) {
             $this->observers->detach($o);
         }
-    }
-
-    public function notifyObservers(): void
-    {
-        if (!$this->changed) {
-            return;
-        }
-        foreach ($this->observers as $o) {
-            $o->update(new DataDTO($this->someData1, $this->someData2, $this->someData3));
-        }
-        $this->changed = false;
     }
 
     public function mainMethod(): void
@@ -55,5 +45,16 @@ class SomeProducer implements Subject
             // ignore
         }
         $this->notifyObservers();
+    }
+
+    public function notifyObservers(): void
+    {
+        if (!$this->changed) {
+            return;
+        }
+        foreach ($this->observers as $o) {
+            $o->update(new DataInterfaceDTO($this->someData1, $this->someData2, $this->someData3));
+        }
+        $this->changed = false;
     }
 }

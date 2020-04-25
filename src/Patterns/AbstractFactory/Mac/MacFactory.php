@@ -4,12 +4,12 @@ declare(strict_types=1);
 namespace App\Patterns\AbstractFactory\Mac;
 
 
-use App\Patterns\AbstractFactory\Button;
-use App\Patterns\AbstractFactory\GuiFactory;
+use App\Patterns\AbstractFactory\ButtonInterface;
+use App\Patterns\AbstractFactory\GuiFactoryInterface;
 
-class MacFactory implements GuiFactory
+class MacFactory implements GuiFactoryInterface
 {
-    public function createButton(): Button
+    public function createButton(): ButtonInterface
     {
         return new MacButton();
     }
