@@ -8,7 +8,7 @@ namespace App\Patterns\Observer\ConcreteObserver;
 use App\Patterns\Observer\DataInterface;
 use App\Patterns\Observer\ObserverInterface;
 
-class ObserverInterface2 implements ObserverInterface
+class Observer2 implements ObserverInterface
 {
     private string $logFile;
 

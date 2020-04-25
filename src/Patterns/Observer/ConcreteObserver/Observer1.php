@@ -8,7 +8,7 @@ namespace App\Patterns\Observer\ConcreteObserver;
 use App\Patterns\Observer\DataInterface;
 use App\Patterns\Observer\ObserverInterface;
 
-class ObserverInterface3 implements ObserverInterface
+class Observer1 implements ObserverInterface
 {
     private string $logFile;
 
@@ -20,6 +20,6 @@ class ObserverInterface3 implements ObserverInterface
     public function update(DataInterface $data): void
     {
         $name = __METHOD__;
-        file_put_contents($this->logFile, "$name: {$data->getData3()}<br>\n", FILE_APPEND);
+        file_put_contents($this->logFile, "$name: {$data->getData1()}<br>\n", FILE_APPEND);
     }
 }

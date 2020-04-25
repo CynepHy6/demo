@@ -18,38 +18,38 @@ class PizzaService
         $pizza = null;
         switch ($type) {
             case PizzaEnum::FAT_BECON:
-                $pizza = new PizzaFat(new PizzaInterfaceBase());
+                $pizza = new PizzaFat(new Pizza());
                 $pizza = new PizzaBecon($pizza);
                 break;
             case PizzaEnum::FAT_CHEESE:
-                $pizza = new PizzaFat(new PizzaInterfaceBase());
+                $pizza = new PizzaFat(new Pizza());
                 $pizza = new PizzaCheese($pizza);
                 break;
             case PizzaEnum::SLIM_BECON:
-                $pizza = new PizzaSlim(new PizzaInterfaceBase());
+                $pizza = new PizzaSlim(new Pizza());
                 $pizza = new PizzaBecon($pizza);
                 break;
             case PizzaEnum::SLIM_CHEESE:
-                $pizza = new PizzaSlim(new PizzaInterfaceBase());
+                $pizza = new PizzaSlim(new Pizza());
                 $pizza = new PizzaCheese($pizza);
                 break;
-            case PizzaEnum::DOUBLE_FAT_BECON:
-                $pizza = new PizzaFat(new PizzaInterfaceBase());
+            case PizzaEnum::DOUBLE_BECON_FAT:
+                $pizza = new PizzaFat(new Pizza());
                 $pizza = new PizzaBecon($pizza);
                 $pizza = new PizzaBecon($pizza);
                 break;
-            case PizzaEnum::DOUBLE_FAT_CHEESE:
-                $pizza = new PizzaFat(new PizzaInterfaceBase());
+            case PizzaEnum::DOUBLE_CHEESE_FAT:
+                $pizza = new PizzaFat(new Pizza());
                 $pizza = new PizzaCheese($pizza);
                 $pizza = new PizzaCheese($pizza);
                 break;
-            case PizzaEnum::DOUBLE_SLIM_BECON:
-                $pizza = new PizzaSlim(new PizzaInterfaceBase());
+            case PizzaEnum::DOUBLE_BECON_SLIM:
+                $pizza = new PizzaSlim(new Pizza());
                 $pizza = new PizzaBecon($pizza);
                 $pizza = new PizzaBecon($pizza);
                 break;
-            case PizzaEnum::DOUBLE_SLIM_CHEESE:
-                $pizza = new PizzaSlim(new PizzaInterfaceBase());
+            case PizzaEnum::DOUBLE_CHEESE_SLIM:
+                $pizza = new PizzaSlim(new Pizza());
                 $pizza = new PizzaCheese($pizza);
                 $pizza = new PizzaCheese($pizza);
                 break;

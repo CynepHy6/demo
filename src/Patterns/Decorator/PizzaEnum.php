@@ -9,8 +9,8 @@ class PizzaEnum
     public const FAT_CHEESE = 2;
     public const SLIM_BECON = 3;
     public const SLIM_CHEESE = 4;
-    public const DOUBLE_FAT_BECON = 5;
-    public const DOUBLE_FAT_CHEESE = 6;
-    public const DOUBLE_SLIM_BECON = 7;
-    public const DOUBLE_SLIM_CHEESE = 8;
+    public const DOUBLE_BECON_FAT = 5;
+    public const DOUBLE_CHEESE_FAT = 6;
+    public const DOUBLE_BECON_SLIM = 7;
+    public const DOUBLE_CHEESE_SLIM = 8;
 }

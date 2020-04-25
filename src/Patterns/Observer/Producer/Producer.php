@@ -1,14 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Patterns\Observer\ConcreteObserver;
+namespace App\Patterns\Observer\Producer;
 
+use App\Patterns\Observer\DTO\DataInterfaceDTO;
 use App\Patterns\Observer\ObserverInterface;
 use App\Patterns\Observer\SubjectInterface;
 use Exception;
 use SplObjectStorage;
 
-class SomeProducer implements SubjectInterface
+class Producer implements SubjectInterface
 {
     private SplObjectStorage $observers;
     private int $someData1;

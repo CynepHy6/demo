@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Patterns\Decorator;
 
-class PizzaInterfaceBase implements PizzaInterface
+class Pizza implements PizzaInterface
 {
     protected PizzaInterface $pizza;
 

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Patterns\Observer\ConcreteObserver;
+namespace App\Patterns\Observer\DTO;
 
 use App\Patterns\Observer\DataInterface;
 

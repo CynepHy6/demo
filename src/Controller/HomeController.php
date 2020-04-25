@@ -6,7 +6,7 @@ namespace App\Controller;
 use App\Patterns\AbstractFactory\FactoryService;
 use App\Patterns\Decorator\PizzaEnum;
 use App\Patterns\Decorator\PizzaService;
-use App\Patterns\Observer\ObserverService;
+use App\Patterns\Observer\ProducerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,12 +16,12 @@ class HomeController extends AbstractController
 {
     private FactoryService $factoryService;
     private PizzaService $pizzaService;
-    private ObserverService $observerService;
+    private ProducerService $observerService;
 
     public function __construct(
         FactoryService $factoryService,
         PizzaService $pizzaService,
-        ObserverService $observerService
+        ProducerService $observerService
     ) {
         $this->factoryService = $factoryService;
         $this->pizzaService = $pizzaService;

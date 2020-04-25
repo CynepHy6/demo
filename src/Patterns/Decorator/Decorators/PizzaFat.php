@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Patterns\Decorator\Decorators;
 
-use App\Patterns\Decorator\PizzaInterfaceBase;
+use App\Patterns\Decorator\Pizza;
 
-class PizzaFat extends PizzaInterfaceBase
+class PizzaFat extends Pizza
 {
     public function getDescription(): string
     {
