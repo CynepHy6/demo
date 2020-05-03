@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Patterns\Builder;
 
-interface BuilderInterface
+class BuilderException extends \Exception
 {
-    public function build(): string;
 }

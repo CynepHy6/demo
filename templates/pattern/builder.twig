@@ -5,4 +5,18 @@
 
 {% block body %}
     <h3>Строитель</h3>
+    {% if not type %}
+        <p>Что строим?</p>
+        <ul>
+            <li><a href="{{ path('builder', {'type':1}) }}">Хата</a></li>
+            <li><a href="{{ path('builder', {'type':2}) }}">Коттедж</a></li>
+        </ul>
+    {% else %}
+        {% if img %}
+            <p><img src="/{{ img }}"></p>
+        {% else %}
+            <p>все строители на обеде</p>
+        {% endif %}
+        <p><a href="{{ path('builder') }}"><< назад</a></p>
+    {% endif %}
 {% endblock %}

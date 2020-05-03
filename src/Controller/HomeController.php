@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Patterns\AbstractFactory\FactoryService;
+use App\Patterns\Builder\BuilderException;
+use App\Patterns\Builder\BuilderService;
 use App\Patterns\Decorator\PizzaEnum;
 use App\Patterns\Decorator\PizzaService;
 use App\Patterns\Observer\ProducerService;
@@ -17,26 +19,39 @@ class HomeController extends AbstractController
     private FactoryService $factoryService;
     private PizzaService $pizzaService;
     private ProducerService $observerService;
+    private BuilderService $builderService;
 
     public function __construct(
         FactoryService $factoryService,
         PizzaService $pizzaService,
-        ProducerService $observerService
+        ProducerService $observerService,
+        BuilderService $builderService
     ) {
         $this->factoryService = $factoryService;
         $this->pizzaService = $pizzaService;
         $this->observerService = $observerService;
+        $this->builderService = $builderService;
     }
 
     /**
      * @Route("/builder", name="builder")
+     * @param Request $request
      *
      * @return Response
+     * @throws BuilderException
      */
-    public function indexBuilder(): Response
+    public function indexBuilder(Request $request): Response
     {
+        $img = null;
+        if ($type = (int)$request->get('type')) {
+            $builder = $this->builderService->getBuilder($type);
+            $img = $builder->build();
+        }
 
-        return $this->render('pattern/builder.twig');
+        return $this->render(
+            'pattern/builder.twig',
+            compact('type', 'img')
+        );
     }
 
     /**

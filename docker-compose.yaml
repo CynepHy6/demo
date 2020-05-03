@@ -16,6 +16,7 @@ services:
       - '443:443'
     volumes:
       - ./docker/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/app.conf
+      - ./public/img:/app/public/img
     restart: unless-stopped
   
   php-fpm:
