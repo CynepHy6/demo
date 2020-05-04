@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace App\Patterns\Builder;
 
-use App\Patterns\Builder\DTO\BuildDTO;
+use App\Patterns\Builder\VO\BuildVO;
 
 abstract class AbstractBuilder implements BuilderInterface
 {
-    protected BuildDTO $dto;
+    protected BuildVO $vo;
     /** @var false|resource */
     protected $image;
     /** @var false|int */
@@ -22,93 +22,57 @@ abstract class AbstractBuilder implements BuilderInterface
     protected $doorColor;
     /** @var false|int */
     protected $basementColor;
+    /** @var false|int */
+    protected $textColor;
 
-    public function __construct(BuildDTO $build)
+    public function __construct(BuildVO $build)
     {
-        $this->dto = $build;
+        $this->vo = $build;
     }
 
     public function build(): string
     {
-        $this->create();
+        $this->prepareImage();
         $this->drawRoof();
         $this->drawWall();
         $this->drawWindows();
         $this->drawDoor();
         $this->drawBasement();
-        $this->save();
+        $this->saveImage();
 
-        return $this->dto->fileName;
+        return $this->vo->fileName;
     }
 
-    protected function create(): void
+    protected function prepareImage(): void
     {
-        $this->image = imagecreatetruecolor($this->dto->width, $this->dto->height);
+        $this->image = imagecreatetruecolor($this->vo->width, $this->vo->height);
 
-        $this->roofColor = imagecolorallocatealpha($this->image, ...$this->dto->roofColor);
-        $this->wallColor = imagecolorallocatealpha($this->image, ...$this->dto->wallColor);
-        $this->windowColor = imagecolorallocatealpha($this->image, ...$this->dto->windowColor);
-        $this->doorColor = imagecolorallocatealpha($this->image, ...$this->dto->doorColor);
-        $this->basementColor = imagecolorallocatealpha($this->image, ...$this->dto->basementColor);
-        $this->backgroundColor = imagecolorallocatealpha($this->image, ...$this->dto->backgroundColor);
+        $this->roofColor = imagecolorallocatealpha($this->image, ...$this->vo->roofColor);
+        $this->wallColor = imagecolorallocatealpha($this->image, ...$this->vo->wallColor);
+        $this->windowColor = imagecolorallocatealpha($this->image, ...$this->vo->windowColor);
+        $this->doorColor = imagecolorallocatealpha($this->image, ...$this->vo->doorColor);
+        $this->basementColor = imagecolorallocatealpha($this->image, ...$this->vo->basementColor);
+        $this->backgroundColor = imagecolorallocatealpha($this->image, ...$this->vo->backgroundColor);
+        $this->textColor = imagecolorallocatealpha($this->image, ...$this->vo->textColor);
 
         imagesavealpha($this->image, true);
         imagefill($this->image, 0, 0, $this->backgroundColor);
     }
 
-    protected function save(): void
+    protected function saveImage(): void
     {
-        imagepng($this->image, $this->dto->fileName);
-        chmod($this->dto->fileName, 0644);
+        imagestring($this->image, 2, 0, 0, $this->vo->fileName, $this->textColor);
+        imagepng($this->image, $this->vo->fileName);
+        chmod($this->vo->fileName, 0644);
     }
 
-    public function drawRoof(): void
-    {
-        $points = [
-            // x1y1
-            0,
-            $this->dto->height / 3,
-            // x2y2
-            $this->dto->width / 2,
-            0,
-            // x3y3
-            $this->dto->width, // x3
-            $this->dto->height / 3, // y3
-        ];
-        imagepolygon(
-            $this->image,
-            $points,
-            count($points) / 2,
-            $this->roofColor
-        );
-        imagefill($this->image, $this->dto->width / 2, 4, $this->roofColor);
-    }
+    abstract protected function drawRoof(): void;
 
-    public function drawWall(): void
-    {
-        $this->drawRect(100, 202, 600, 200, $this->wallColor);
-        imagefill($this->image, 101, 203, $this->wallColor);
-    }
+    abstract protected function drawWall(): void;
 
-    public function drawDoor(): void
-    {
-        $this->drawRect(200, 250, 100, 150, $this->doorColor);
-    }
+    abstract protected function drawDoor(): void;
 
-    public function drawWindows(): void
-    {
-        $this->drawRect(400, 250, 100, 100, $this->windowColor);
-    }
+    abstract protected function drawWindows(): void;
 
-    public function drawBasement(): void
-    {
-        $this->drawRect(100, 404, $this->dto->width - 200, 200, $this->basementColor);
-        imagefill($this->image, 150, 450, $this->basementColor);
-    }
-
-    protected function drawRect(int $x, int $y, int $width, int $height, int $color): void
-    {
-        $points = [$x, $y, $x + $width, $y, $x + $width, $y + $height, $x, $y + $height];
-        imagepolygon($this->image, $points, count($points) / 2, $color);
-    }
+    abstract protected function drawBasement(): void;
 }

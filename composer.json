@@ -4,7 +4,9 @@
   "require": {
     "php": "^7.4",
     "ext-ctype": "*",
+    "ext-gd": "*",
     "ext-iconv": "*",
+    "cynephy6/draw-helper-bundle": "^0.1.6",
     "sensio/framework-extra-bundle": "^5.5",
     "symfony/console": "5.0.*",
     "symfony/dotenv": "5.0.*",
@@ -12,8 +14,7 @@
     "symfony/framework-bundle": "5.0.*",
     "symfony/orm-pack": "^1.0",
     "symfony/twig-pack": "^1.0",
-    "symfony/yaml": "5.0.*",
-    "ext-gd": "*"
+    "symfony/yaml": "5.0.*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
@@ -64,5 +65,11 @@
       "allow-contrib": false,
       "require": "5.0.*"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "bundles/Cynephy6"
+    }
+  ]
 }

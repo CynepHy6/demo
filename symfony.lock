@@ -1,4 +1,7 @@
 {
+    "cynephy6/draw-helper-bundle": {
+        "version": "0.1.6"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
