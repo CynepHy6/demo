@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6445917db704f0bc43c891e11313f13d",
+    "content-hash": "630074a3e86fbccc6619aee7b8ea84da",
     "packages": [
         {
             "name": "cynephy6/draw-helper-bundle",
-            "version": "0.1.6",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CynepHy6/draw-helper-bundle.git",
+                "reference": "bcd749d724c9af7669a3ddf40834f15064adc522"
+            },
             "dist": {
-                "type": "path",
-                "url": "bundles/Cynephy6",
-                "reference": "acc119bc9b942a6a207b3d0509152f8d5365fcd7"
+                "type": "zip",
+                "url": "https://api.github.com/repos/CynepHy6/draw-helper-bundle/zipball/bcd749d724c9af7669a3ddf40834f15064adc522",
+                "reference": "bcd749d724c9af7669a3ddf40834f15064adc522",
+                "shasum": ""
             },
             "require": {
                 "ext-gd": "*",
@@ -27,12 +33,12 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Cynephy6\\DrawHelperBundle\\": "DrawHelperBundle/"
+                    "Cynephy6\\DrawHelperBundle\\": "src/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Cynephy6\\DrawHelperBundle\\Tests\\": "Tests/"
+                    "Cynephy6\\DrawHelperBundle\\Tests\\": "src/Tests/"
                 }
             },
             "license": [
@@ -40,11 +46,16 @@
             ],
             "authors": [
                 {
-                    "name": "CynepHy6",
-                    "email": "CynepHy6@gmail.com"
+                    "name": "cynephy6",
+                    "email": "email@example.com"
                 }
             ],
-            "description": "Drawing assistant"
+            "description": "draw image helper",
+            "support": {
+                "source": "https://github.com/CynepHy6/draw-helper-bundle/tree/master",
+                "issues": "https://github.com/CynepHy6/draw-helper-bundle/issues"
+            },
+            "time": "2020-05-04T19:46:19+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -4052,12 +4063,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "478dd17a48d0eb007ff854f4b885034df5db7c29"
+                "reference": "f46390d28af4fdb07c09d9aabf4c4e35149a7a08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/478dd17a48d0eb007ff854f4b885034df5db7c29",
-                "reference": "478dd17a48d0eb007ff854f4b885034df5db7c29",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/f46390d28af4fdb07c09d9aabf4c4e35149a7a08",
+                "reference": "f46390d28af4fdb07c09d9aabf4c4e35149a7a08",
                 "shasum": ""
             },
             "conflict": {
@@ -4147,7 +4158,7 @@
                 "magento/product-community-edition": ">=2,<2.2.10|>=2.3,<2.3.2-p.2",
                 "monolog/monolog": ">=1.8,<1.12",
                 "namshi/jose": "<2.2",
-                "nzo/url-encryptor-bundle": "<5.0.1",
+                "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
                 "onelogin/php-saml": "<2.10.4",
                 "oneup/uploader-bundle": "<1.9.3|>=2,<2.1.5",
                 "openid/php-openid": "<2.3",
@@ -4311,7 +4322,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2020-05-03T18:57:18+00:00"
+            "time": "2020-05-04T14:37:25+00:00"
         },
         {
             "name": "symfony/maker-bundle",
@@ -4383,11 +4394,12 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
+        "cynephy6/draw-helper-bundle": 20,
         "roave/security-advisories": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.4",
