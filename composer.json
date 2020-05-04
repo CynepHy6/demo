@@ -6,7 +6,7 @@
     "ext-ctype": "*",
     "ext-gd": "*",
     "ext-iconv": "*",
-    "cynephy6/draw-helper-bundle": "^0.1.6",
+    "cynephy6/draw-helper-bundle": "dev-master",
     "sensio/framework-extra-bundle": "^5.5",
     "symfony/console": "5.0.*",
     "symfony/dotenv": "5.0.*",
@@ -68,8 +68,10 @@
   },
   "repositories": [
     {
-      "type": "path",
-      "url": "bundles/Cynephy6"
+      "type": "vcs",
+      "url": "https://github.com/CynepHy6/draw-helper-bundle"
     }
-  ]
+  ],
+  "prefer-stable": true,
+  "minimum-stability": "dev"
 }
