@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Patterns\Decorator;
+namespace App\Patterns\Decorator\Enum;
 
 class PizzaEnum
 {

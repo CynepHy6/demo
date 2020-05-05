@@ -6,7 +6,7 @@ namespace App\Controller;
 use App\Patterns\AbstractFactory\FactoryService;
 use App\Patterns\Builder\BuilderException;
 use App\Patterns\Builder\BuilderService;
-use App\Patterns\Decorator\PizzaEnum;
+use App\Patterns\Decorator\Enum\PizzaEnum;
 use App\Patterns\Decorator\PizzaService;
 use App\Patterns\Observer\ProducerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

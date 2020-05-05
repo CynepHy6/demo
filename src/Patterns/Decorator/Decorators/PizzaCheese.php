@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace App\Patterns\Decorator\Decorators;
 
+use App\Patterns\Decorator\Enum\PizzaTypeEnum;
 use App\Patterns\Decorator\Pizza;
+use App\Patterns\Decorator\PizzaNotFoundException;
 
 class PizzaCheese extends Pizza
 {
@@ -14,6 +16,9 @@ class PizzaCheese extends Pizza
 
     public function getCost(): int
     {
-        return $this->pizza->getCost() + 70;
+        if (null === $pizzaPrice = $this->repository->findByType(PizzaTypeEnum::CHEESE)) {
+            throw new PizzaNotFoundException('Ингридиент не найден');
+        }
+        return $this->pizza->getCost() + $pizzaPrice->getPrice();
     }
 }
