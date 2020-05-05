@@ -1,7 +1,7 @@
-version: '2'
+version: '3'
 
 networks:
-  app-tier:
+  patterns:
     driver: bridge
 
 services:
@@ -10,7 +10,7 @@ services:
     depends_on:
       - php-fpm
     networks:
-      - app-tier
+      - patterns
     ports:
       - '80:8000'
       - '443:443'
@@ -22,7 +22,18 @@ services:
   php-fpm:
     image: 'bitnami/php-fpm:7.4'
     networks:
-      - app-tier
+      - patterns
     volumes:
       - ./:/app
     restart: unless-stopped
+  
+  postgres:
+    image: postgres:11.7
+    networks:
+      - patterns
+    build:
+      dockerfile: docker/Dockerfile_pg
+      context: .
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: example
