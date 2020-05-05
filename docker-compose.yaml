@@ -5,6 +5,33 @@ networks:
     driver: bridge
 
 services:
+  postgres:
+    image: postgres:11.7
+    networks:
+      - patterns
+    ports:
+      - 5432:5432
+    build:
+      dockerfile: docker/Dockerfile_pg
+      context: .
+    volumes:
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_USER: 'postgres'
+  
+  php-fpm:
+    image: 'bitnami/php-fpm:7.4'
+    depends_on:
+      - postgres
+    networks:
+      - patterns
+    volumes:
+      - ./:/app
+      - ./docker/php.ini:/opt/bitnami/php/etc/conf.d/php.ini
+    restart: unless-stopped
+  
   nginx:
     image: 'bitnami/nginx:latest'
     depends_on:
@@ -18,24 +45,3 @@ services:
       - ./docker/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/app.conf
       - ./public/img:/app/public/img
     restart: unless-stopped
-  
-  php-fpm:
-    image: 'bitnami/php-fpm:7.4'
-    depends_on:
-      - postgres
-    networks:
-      - patterns
-    volumes:
-      - ./:/app
-    restart: unless-stopped
-  
-  postgres:
-    image: postgres:11.7
-    networks:
-      - patterns
-    build:
-      dockerfile: docker/Dockerfile_pg
-      context: .
-    restart: unless-stopped
-    environment:
-      POSTGRES_PASSWORD: example
