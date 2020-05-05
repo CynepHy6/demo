@@ -21,6 +21,8 @@ services:
   
   php-fpm:
     image: 'bitnami/php-fpm:7.4'
+    depends_on:
+      - postgres
     networks:
       - patterns
     volumes:
