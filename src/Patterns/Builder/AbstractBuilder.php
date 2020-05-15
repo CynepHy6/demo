@@ -59,20 +59,20 @@ abstract class AbstractBuilder implements BuilderInterface
         imagefill($this->image, 0, 0, $this->backgroundColor);
     }
 
+    abstract protected function drawRoof(): void;
+
+    abstract protected function drawWall(): void;
+
+    abstract protected function drawWindows(): void;
+
+    abstract protected function drawDoor(): void;
+
+    abstract protected function drawBasement(): void;
+
     protected function saveImage(): void
     {
         imagestring($this->image, 2, 0, 0, $this->vo->fileName, $this->textColor);
         imagepng($this->image, $this->vo->fileName);
         chmod($this->vo->fileName, 0644);
     }
-
-    abstract protected function drawRoof(): void;
-
-    abstract protected function drawWall(): void;
-
-    abstract protected function drawDoor(): void;
-
-    abstract protected function drawWindows(): void;
-
-    abstract protected function drawBasement(): void;
 }

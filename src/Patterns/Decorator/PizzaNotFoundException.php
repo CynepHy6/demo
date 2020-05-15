@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace App\Patterns\Decorator;
 
-class PizzaNotFoundException extends \Exception
+use Exception;
+
+class PizzaNotFoundException extends Exception
 {
 
 }

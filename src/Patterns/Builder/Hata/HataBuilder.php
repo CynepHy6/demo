@@ -24,6 +24,17 @@ class HataBuilder extends AbstractBuilder
         parent::__construct($vo);
     }
 
+    public function build(): string
+    {
+        $this->prepareImage();
+        $this->drawRoof();
+        $this->drawWall();
+        $this->drawDoor();
+        $this->saveImage();
+
+        return $this->vo->fileName;
+    }
+
     public function drawRoof(): void
     {
         DrawService::triangleIso(
@@ -43,8 +54,8 @@ class HataBuilder extends AbstractBuilder
             $this->image,
             0,
             $this->vo->calcOffsetWall(),
-            $this->vo->width-1,
-            $this->vo->heightWall-1,
+            $this->vo->width - 1,
+            $this->vo->heightWall - 1,
             $this->textColor,
             $this->wallColor
         );
@@ -61,17 +72,6 @@ class HataBuilder extends AbstractBuilder
             $this->doorColor,
             $this->doorColor
         );
-    }
-
-    public function build(): string
-    {
-        $this->prepareImage();
-        $this->drawRoof();
-        $this->drawWall();
-        $this->drawDoor();
-        $this->saveImage();
-
-        return $this->vo->fileName;
     }
 
     protected function drawWindows(): void

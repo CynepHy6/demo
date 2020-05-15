@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Patterns\Builder;
 
-class BuilderException extends \Exception
+use Exception;
+
+class BuilderException extends Exception
 {
 }
