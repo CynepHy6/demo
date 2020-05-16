@@ -7,6 +7,7 @@
     "ext-gd": "*",
     "ext-iconv": "*",
     "cynephy6/draw-helper-bundle": "dev-master",
+    "goaop/goaop-symfony-bundle": "^2.2.3",
     "sensio/framework-extra-bundle": "^5.5",
     "symfony/console": "5.0.*",
     "symfony/dotenv": "5.0.*",
@@ -70,6 +71,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/CynepHy6/draw-helper-bundle"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/CynepHy6/goaop-symfony-bundle"
     }
   ],
   "prefer-stable": true,
