@@ -28,11 +28,11 @@ class CottegeBuilder extends AbstractBuilder
 
     public function drawRoof(): void
     {
-        $widthSection = (int)($this->vo->width / 2);
+        $widthSection = (int) ($this->vo->width / 2);
         for ($i = 0; $i < 3; $i++) {
             DrawService::triangleIso(
                 $this->image,
-                $i * (int)($widthSection / 2),
+                $i * (int) ($widthSection / 2),
                 $this->vo->heightRoof,
                 $widthSection,
                 -$this->vo->heightRoof,

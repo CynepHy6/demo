@@ -43,7 +43,7 @@ class HomeController extends AbstractController
     public function indexBuilder(Request $request): Response
     {
         $img = null;
-        if ($type = (int)$request->get('type')) {
+        if ($type = (int) $request->get('type')) {
             $builder = $this->builderService->getBuilder($type);
             $img = $builder->build();
         }
@@ -80,7 +80,7 @@ class HomeController extends AbstractController
      */
     public function indexDecorator(Request $request): Response
     {
-        $type = (int)$request->get('type');
+        $type = (int) $request->get('type');
         $pizza = $this->pizzaService->getPizza($type);
         return $this->render('pattern/decorator.twig', [
             'pizza' => $pizza,

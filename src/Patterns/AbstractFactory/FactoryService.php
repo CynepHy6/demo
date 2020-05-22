@@ -31,8 +31,10 @@ class FactoryService
         if (false !== stripos($agent, 'linux')) {
             return new LinuxFactory();
         }
-        if (false !== stripos($agent, 'safari')
-            || false !== stripos($agent, 'Mac OS')) {
+        if (
+            false !== stripos($agent, 'safari')
+            || false !== stripos($agent, 'Mac OS')
+        ) {
             return new MacFactory();
         }
         return new UnknownFactory();

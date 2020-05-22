@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Patterns\AbstractFactory\Mac;
 
-
 use App\Patterns\AbstractFactory\ButtonInterface;
 use App\Patterns\AbstractFactory\GuiFactoryInterface;
 
