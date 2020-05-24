@@ -1,4 +1,8 @@
-version: '3'
+version: '3.7'
+
+volumes:
+  sock: {}
+  img_data:
 
 networks:
   patterns:
@@ -6,42 +10,56 @@ networks:
 
 services:
   postgres:
-    image: postgres:11.7
+    image: postgres:11.7-alpine
+    build:
+      dockerfile: docker/postgres/Dockerfile
+      context: .
+    container_name: demo-postgres
     networks:
       - patterns
     ports:
       - 5432:5432
-    build:
-      dockerfile: docker/Dockerfile_pg
-      context: .
     volumes:
-      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
-    restart: unless-stopped
+      - sock:/var/run
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      POSTGRES_PASSWORD: 'postgres'
-      POSTGRES_USER: 'postgres'
-  
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: "postgres"
+    restart: unless-stopped
+
   php-fpm:
-    image: 'bitnami/php-fpm:7.4'
-    depends_on:
-      - postgres
+    image: bitnami/php-fpm:7.4
+    build:
+      dockerfile: docker/php/Dockerfile
+      context: .
+    container_name: demo-php
     networks:
       - patterns
-    volumes:
-      - ./:/app
-      - ./docker/php.ini:/opt/bitnami/php/etc/conf.d/php.ini
-    restart: unless-stopped
-  
-  nginx:
-    image: 'bitnami/nginx:latest'
     depends_on:
-      - php-fpm
+      - postgres
+    volumes:
+      - .:/opt/app:cached
+      - ./docker/php/php.ini:/opt/bitnami/php/etc/conf.d/php.ini
+    restart: unless-stopped
+    environment:
+      COMPOSER_MEMORY_LIMIT: -1
+
+  nginx:
+    image: bitnami/nginx:latest
+    build:
+      dockerfile: docker/nginx/Dockerfile
+      context: .
+    container_name: demo-nginx
     networks:
       - patterns
     ports:
-      - '80:8000'
-      - '443:443'
+      - 80:8000
+      - 443:443
+    depends_on:
+      - php-fpm
     volumes:
-      - ./docker/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/app.conf
-      - ./public/img:/app/public/img
+      - sock:/var/run
+      - .:/opt/app:cached
+      - ./docker/nginx/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/app.conf
+      - img_data:/opt/app/public/img
     restart: unless-stopped
