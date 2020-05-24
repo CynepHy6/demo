@@ -23,7 +23,7 @@ class ProducerService
 
     public function run(): void
     {
-        $logFile = __DIR__ . '/../../../public/observer.log';
+        $logFile = '/tmp/observer.log';
         file_put_contents($logFile, '');
         $o1 = new Observer1($logFile);
         $o2 = new Observer2($logFile);

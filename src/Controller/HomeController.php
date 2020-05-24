@@ -63,7 +63,7 @@ class HomeController extends AbstractController
     {
         $this->observerService->run();
         $log = null;
-        $logPath = __DIR__ . '/../../public/observer.log';
+        $logPath = '/tmp/observer.log';
         if (file_exists($logPath)) {
             $log = file_get_contents($logPath);
         }
