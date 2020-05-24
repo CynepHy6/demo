@@ -73,6 +73,5 @@ abstract class AbstractBuilder implements BuilderInterface
     {
         imagestring($this->image, 2, 0, 0, $this->vo->fileName, $this->textColor);
         imagepng($this->image, $this->vo->fileName);
-        chmod($this->vo->fileName, 0644);
     }
 }

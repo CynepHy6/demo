@@ -40,6 +40,7 @@ services:
     volumes:
       - .:/opt/app:cached
       - ./docker/php/php.ini:/opt/bitnami/php/etc/conf.d/php.ini
+      - img_data:/opt/app/public/img
     restart: unless-stopped
     environment:
       COMPOSER_MEMORY_LIMIT: -1
